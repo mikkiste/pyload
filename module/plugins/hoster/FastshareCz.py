@@ -22,11 +22,12 @@ class FastshareCz(SimpleHoster):
 
     COOKIES = [("fastshare.cz", "lang", "en")]
 
-    INFO_PATTERN    = r'<h1 class="dwp">(?P<N>[^<]+)</h1>\s*<div class="fileinfo">\s*Size\s*: (?P<S>\d+) (?P<U>[\w^_]+),'
+    NAME_PATTERN = r'<h3 class="section_title">(?P<N>[^<]+)<h3>'
+    SIZE_PATTERN = r'<strong>Size\s*:</strong>\s*(?P<S>\d+) (?P<U>[\w^_]+)\s*<'
     OFFLINE_PATTERN = r'>(The file has been deleted|Requested page not found)'
 
-    LINK_FREE_PATTERN    = r'action=(/free/.*?)>\s*<img src="([^"]*)"><br'
-    LINK_PREMIUM_PATTERN = r'(http://data\d+\.fastshare\.cz/download\.php\?id=\d+&)'
+    LINK_FREE_PATTERN    = r'action=(/free/.*?)>\s*<p><em>Enter the code\s*:</em>\s*<span><img src="([^"]*)"></span'
+    LINK_PREMIUM_PATTERN = r'(http://\w*\d*\.fastshare\.cz/download\.php\?id=\d+&)'
 
     SLOT_ERROR   = "> 100% of FREE slots are full"
     CREDIT_ERROR = " credit for "
